@@ -1,2 +1,2 @@
 release: python manage.py migrate
-web: gunicorn whosnext.wsgi --log-file -
+web: gunicorn queue_management.wsgi --log-file -
