@@ -1,1 +1,0 @@
-web: gunicorn queue_management.wsgi --log-file -
