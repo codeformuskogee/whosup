@@ -5,7 +5,7 @@ from django.utils import timezone
 class Queue(models.Model):
     name = models.CharField(max_length=200)
 
-class Member(models.Model):
+class Member(models.Model):models
     full_name = models.CharField(max_length=200)
     pin = models.IntegerField()
 
