@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'queue_management'
+    'queue_management',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
