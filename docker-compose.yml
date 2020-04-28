@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+  web:
+    build: ./whosnext-web
+    command: python /usr/src/apps/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./whosnext-web/:/usr/src/apps/
+    ports:
+      - 8000:8000
+    env_file:
+      - ./.env.dev
+    depends_on:
+      - db
+
+  db:
+    image: postgres:12.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=whosup
+      - POSTGRES_PASSWORD=whosup
+      - POSTGRES_DB=whosup_dev
+
+volumes:
+  postgres_data:
