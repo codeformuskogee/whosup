@@ -4,7 +4,7 @@ from . import views
 urlpatterns = [
     #members
     #/lists/:slug/queuemember/new
-    path('', views.new_queuememeber, name='new_queuememeber'),
+    path('q/<slug:queue_name>/', views.new_queuememeber),
     #/lists/:slug (e.g./lists/administration)
     #/lists/:slug
 

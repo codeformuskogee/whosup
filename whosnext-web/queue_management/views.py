@@ -1,17 +1,17 @@
 from django.shortcuts import render
-from .forms import QueueMemberForm
-from .models import QueueMember, Member
+from .forms import MemberForm
+from .models import QueueMember, Member, Queue
 
 # Create your views here.
-def new_queuememeber(request):
+def new_queuememeber(request, queue_name):
+    queue = Queue.objects.get(name=queue_name)
+    # if not queue:
+    #     raise Exception('Invalid queue name')
     if request.method == "POST":
-        form = QueueMemberForm(request.POST)
+        form = MemberForm(request.POST)
         if form.is_valid():
-            queuemember = form.save(commit=False)
-            member = Member(full_name=request.POST.get('full_name'), pin=request.POST.get('pin'))
-            member.save()
-            queuemember.member_id = member.id
-            queuemember.save()
+            member = form.save()
+            QueueMember.objects.create(queue_id=queue.id, member_id=member.id)
     else:
-       form = QueueMemberForm()
+        form = MemberForm()
     return render(request, 'queue_management/queuemember_new.html', {'form': form})
