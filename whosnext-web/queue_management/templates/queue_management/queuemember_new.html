@@ -1,5 +1,5 @@
 {% load crispy_forms_tags %}
-
+{% load static %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/simplex/bootstrap.min.css" rel="stylesheet" integrity="sha384-cRAmF0wErT4D9dEBc36qB6pVu+KmLh516IoGWD/Gfm6FicBbyDuHgS4jmkQB8u1a" crossorigin="anonymous">
 
     <title>Hello, world!</title>
     <style>
@@ -25,17 +25,23 @@
             align-items: center;
             -webkit-box-pack: center;
             justify-content: center;
+            min-width: 300px;
+        }
+        .main-card {
+            width: 300px;
         }
     </style>
 </head>
 <body>
 <div class="main-wrap">
-    <div class="card">
+    <img src="{% static 'whosnext/example.jpg' %}" alt="My image">
+
+    <div class="main-card card">
         <div class="card-body">
             <h2>Sign In</h2>
             <form method="POST" class="post-form">{% csrf_token %}
                 {{ form | crispy }}
-                <button type="submit" class="save btn btn-default">Save</button>
+                <button type="submit" class="save btn btn-primary">Save</button>
             </form>
         </div>
     </div>
