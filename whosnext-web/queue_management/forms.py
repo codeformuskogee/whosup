@@ -7,5 +7,6 @@ class MemberForm(forms.ModelForm):
         model = Member
         exclude = ()
         widgets = {
+
             'pin': forms.NumberInput(attrs={'style':'-webkit-text-security: circle; -moz-text-security:circle; text-security:circle;'})
         }

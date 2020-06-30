@@ -3,8 +3,13 @@ from .forms import MemberForm
 from .models import QueueMember, Member, Queue
 
 # Create your views here.
-def new_queuememeber(request, queue_name):
-    queue = Queue.objects.get(name=queue_name)
+def list_queuememebers(request, slug):
+    queue = Queue.objects.get(slug__iexact=slug)
+    members = QueueMember.objects.filter(queue_id=queue.id)
+    return render(request, 'queue_management/list_queuemembers.html', {'queue': queue, 'members': members})
+
+def new_queuememeber(request, slug):
+    queue = Queue.objects.get(slug__iexact=slug)
     # if not queue:
     #     raise Exception('Invalid queue name')
     if request.method == "POST":
