@@ -1,65 +1,23 @@
-{% load crispy_forms_tags %}
+{% extends "queue_management/base.html" %}
+
 {% load static %}
-<!doctype html>
-<html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% load crispy_forms_tags %}
 
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/simplex/bootstrap.min.css" rel="stylesheet" integrity="sha384-cRAmF0wErT4D9dEBc36qB6pVu+KmLh516IoGWD/Gfm6FicBbyDuHgS4jmkQB8u1a" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/024da7595f.js" crossorigin="anonymous"></script>
-
-    <title>Hello, world!</title>
-    <style>
-        html, body{
-            height: 100%;
-        }
-        .main-wrap{
-            text-align: center!important;
-            display: flex;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-            -webkit-box-align: center;
-            align-items: center;
-            -webkit-box-pack: center;
-            justify-content: center;
-            min-width: 300px;
-        }
-        .main-card {
-            width: 300px;
-        }
-    </style>
-</head>
-<body>
-<div class="main-wrap">
-    <div class="main-card card">
-        <div class="card-img-top">
-            <img src="{% static 'whosnext/whosuplogo.png' %}" alt="Who's Up" style="width: 100px;margin-bottom:10px;">
-        </div>
-        <div class="card-header">
-            <h2>{{queue.name}}</h2>
-        </div>
-        <ul class="list-group text-left">
-        {% for member in members %}
-            <li class="list-group-item">
-                {{ member.member.full_name }}
-                <a href="">
-                    <i class="fal fa-trash float-right"></i>
-                </a>
-            </li>
-        {% endfor %}
-        </ul>
-        </div>
-    </div>
+{% block content %}
+<div class="card-img-top">
+    <img src="{% static 'whosnext/whosuplogo.png' %}" alt="Who's Up" style="width: 100px;margin-bottom:10px;">
 </div>
-
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
-</html>
+<div class="card-header">
+    <h2>{{queue.name}}</h2>
+</div>
+<ul class="list-group text-left">
+{% for member in members %}
+    <li class="list-group-item">
+        {{ member.member.full_name }}
+        <a href="">
+            <i class="fal fa-trash float-right"></i>
+        </a>
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}
